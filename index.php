@@ -1,6 +1,23 @@
 <?php
 $sitename = "Chatboi";
+
+$qa_pairs = array(
+    array(
+        "question" => "What is your name?",
+        "answer" => "My name is Chatboi."
+    ),
+    array(
+        "question" => "What can you do?",
+        "answer" => "I can answer your questions."
+    ),
+    array(
+        "question" => "How old are you?",
+        "answer" => "I don't have an age, I'm a computer program."
+    )
+    // Add more questions and answers here
+);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,25 +34,14 @@ $sitename = "Chatboi";
     <main>
         <section>
             <ul>
-                <li class="user-question">
-                    <p>What is your name?</p>
-                </li>
-                <li class="chatbot-answer">
-                    <p>My name is Chatboi.</p>
-                </li>
-                <li class="user-question">
-                    <p>What can you do?</p>
-                </li>
-                <li class="chatbot-answer">
-                    <p>I can answer your questions.</p>
-                </li>
-                <li class="user-question">
-                    <p>How old are you?</p>
-                </li>
-                <li class="chatbot-answer">
-                    <p>I don't have an age, I'm a computer program.</p>
-                </li>
-                <!-- Add more questions and answers here -->
+                <?php foreach ($qa_pairs as $qa_pair) { ?>
+                    <li class="user-question">
+                        <p><?php echo $qa_pair["question"]; ?></p>
+                    </li>
+                    <li class="chatbot-answer">
+                        <p><?php echo $qa_pair["answer"]; ?></p>
+                    </li>
+                <?php } ?>
             </ul>
         </section>
         <section>
