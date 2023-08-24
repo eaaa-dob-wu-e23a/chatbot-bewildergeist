@@ -1,28 +1,32 @@
 <?php
+session_start();
+
 $sitename = "Chatboi";
 
-$qa_pairs = array(
-    array(
-        "question" => "What is your name?",
-        "answer" => "My name is Chatboi."
-    ),
-    array(
-        "question" => "What can you do?",
-        "answer" => "I can answer your questions."
-    ),
-    array(
-        "question" => "How old are you?",
-        "answer" => "I don't have an age, I'm a computer program."
-    )
-    // Add more questions and answers here
-);
+if (!isset($_SESSION["qa_pairs"])) {
+    $_SESSION["qa_pairs"] = array(
+        array(
+            "question" => "What is your name?",
+            "answer" => "My name is Chatboi."
+        ),
+        array(
+            "question" => "What can you do?",
+            "answer" => "I can answer your questions."
+        ),
+        array(
+            "question" => "How old are you?",
+            "answer" => "I don't have an age, I'm a computer program."
+        )
+        // Add more questions and answers here
+    );
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_question = $_POST["question"];
     $new_answer = "I'm sorry, I don't know the answer to that question.";
 
-    // Add the new question and answer to the $qa_pairs array
-    $qa_pairs[] = array(
+    // Add the new question and answer to the $_SESSION["qa_pairs"] array
+    $_SESSION["qa_pairs"][] = array(
         "question" => $new_question,
         "answer" => $new_answer
     );
@@ -45,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <main>
         <section>
             <ul>
-                <?php foreach ($qa_pairs as $qa_pair) { ?>
+                <?php foreach ($_SESSION["qa_pairs"] as $qa_pair) { ?>
                     <li class="user-question">
                         <p><?php echo $qa_pair["question"]; ?></p>
                     </li>
