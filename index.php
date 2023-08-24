@@ -16,6 +16,17 @@ $qa_pairs = array(
     )
     // Add more questions and answers here
 );
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $new_question = $_POST["question"];
+    $new_answer = "I'm sorry, I don't know the answer to that question.";
+
+    // Add the new question and answer to the $qa_pairs array
+    $qa_pairs[] = array(
+        "question" => $new_question,
+        "answer" => $new_answer
+    );
+}
 ?>
 
 <!DOCTYPE html>
