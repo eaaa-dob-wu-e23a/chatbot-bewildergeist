@@ -1,15 +1,18 @@
+<?php
+$sitename = "Chatboi";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Chatboi</title>
+    <title><?php echo $sitename; ?></title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header>
-        <h1>Chatboi</h1>
+        <h1><?php echo $sitename; ?></h1>
     </header>
     <main>
         <section>
