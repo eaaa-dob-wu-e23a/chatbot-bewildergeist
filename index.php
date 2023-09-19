@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </header>
     <main>
         <section>
-            <ul>
+            <ul class="chat-messages">
                 <?php foreach ($_SESSION["history"] as $qa_pair) { ?>
                     <li class="user-question">
                         <p><?php echo $qa_pair["question"]; ?></p>

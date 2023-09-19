@@ -1,5 +1,15 @@
+:root {
+    --color-dark-mustard: #f1c27b;
+    --color-light-mustard: #ffd89c;
+    --color-light-green: #a2cdb0;
+    --color-dark-green: #85a389;
+    --color-dark-brown: #3c290c;
+    --color-beige: #fffadd;
+}
+
 body {
-    background-color: #f5f5f5;
+    background-color: var(--color-beige);
+    color: var(--color-dark-brown);
     font-family: "Helvetica Neue", Helvetica, sans-serif;
     font-size: 16px;
     margin: 0;
@@ -7,10 +17,10 @@ body {
 }
 
 header {
-    background-color: #2c3e50;
-    margin: 20px;
-    color: #fff;
+    background-color: var(--color-dark-green);
+    color: var(--color-beige);
     padding: 20px;
+    text-align: center;
 }
 
 h1 {
@@ -22,6 +32,8 @@ main {
     flex-direction: column;
     justify-content: flex-end;
     padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 section {
@@ -30,24 +42,25 @@ section {
     margin-bottom: 20px;
 }
 
-ul {
+.chat-messages {
+    display: flex;
+    flex-direction: column;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-li {
-    margin-bottom: 10px;
-    border-radius: 10px;
+.chat-messages li {
+    margin-bottom: 1em;
+    border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    color: #333;
     padding: 10px 20px;
+    min-width: 60%;
 }
 
 .user-question {
     align-self: flex-start;
-    background-color: #dfe4ea;
-    font-weight: bold;
+    background-color: var(--color-light-mustard);
 }
 
 .chatbot-answer {
@@ -57,31 +70,28 @@ li {
 
 p {
     margin: 0;
-    max-width: 70%;
-    word-wrap: break-word;
-    overflow: hidden;
 }
 
 textarea {
     border: none;
-    border-radius: 10px;
+    border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     font-family: Arial, sans-serif;
     font-size: 16px;
     height: 50px;
     margin: 0;
-    padding: 10px 20px;
+    padding: 0.5em;
     resize: none;
     width: 100%;
 }
 
 button {
-    background-color: #2c3e50;
+    background-color: var(--color-dark-brown);
     border: none;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    color: #fff;
+    color: var(--color-beige);
     cursor: pointer;
     font-size: 16px;
     margin-top: 10px;
