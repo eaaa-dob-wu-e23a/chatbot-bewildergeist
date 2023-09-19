@@ -29,21 +29,32 @@ $answers = array(
     'how can i remove the first element from an array in javascript' => 'You can remove the first element from an array in JavaScript using the shift() method. For example, arrayName.shift() will remove the first element from the array.'
 );
 
-function sanitizeSearch($search)
+/**
+ * Sanitizes a string by removing punctuation, question marks, and trailing spaces, and converting it to lowercase.
+ *
+ * @param string $string The string to sanitize.
+ * @return string The sanitized string.
+ */
+function sanitize($string)
 {
-    // Strip out punctuation, question marks and trailing space from the search string and lowercase it
-    $cleanSearch = str_replace(array('?', '!', '.', ','), '', $search);
-    $trimmedSearch = trim($cleanSearch);
-    $lowercaseSearch = strtolower($trimmedSearch);
-    return $lowercaseSearch;
+    $cleanString = str_replace(array('?', '!', '.', ','), '', $string);
+    $trimmedString = trim($cleanString);
+    $lowercaseString = strtolower($trimmedString);
+    return $lowercaseString;
 }
 
+/**
+ * Finds the answer to a question.
+ * 
+ * @param string $search The question to answer.
+ * @return string The answer to the question.
+ */
 function findAnswer($search)
 {
     // Make the $answers array available inside the function
     global $answers;
 
-    $sanitizedSearch = sanitizeSearch($search);
+    $sanitizedSearch = sanitize($search);
 
     // List all the possible prompts if the user asks for them
     if (in_array($sanitizedSearch, ['help', 'what can you answer', 'what can you do'])) {
