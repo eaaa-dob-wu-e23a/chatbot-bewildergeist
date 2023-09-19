@@ -3,16 +3,16 @@ session_start();
 
 $sitename = "Chatboi";
 
-if (!isset($_SESSION["qa_pairs"])) {
-    $_SESSION["qa_pairs"] = [];
+if (!isset($_SESSION["history"])) {
+    $_SESSION["history"] = [];
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_question = $_POST["question"];
     $new_answer = "I'm sorry, I don't know the answer to that question.";
 
-    // Add the new question and answer to the $_SESSION["qa_pairs"] array
-    $_SESSION["qa_pairs"][] = array(
+    // Add the new question and answer to the $_SESSION["history"] array
+    $_SESSION["history"][] = array(
         "question" => $new_question,
         "answer" => $new_answer
     );
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <main>
         <section>
             <ul>
-                <?php foreach ($_SESSION["qa_pairs"] as $qa_pair) { ?>
+                <?php foreach ($_SESSION["history"] as $qa_pair) { ?>
                     <li class="user-question">
                         <p><?php echo $qa_pair["question"]; ?></p>
                     </li>
