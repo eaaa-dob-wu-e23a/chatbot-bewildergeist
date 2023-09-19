@@ -12,8 +12,9 @@ body {
     color: var(--color-dark-brown);
     font-family: "Helvetica Neue", Helvetica, sans-serif;
     font-size: 16px;
+    line-height: 1.4;
     margin: 0;
-    padding: 0;
+    padding: 0 0 200px 0;
 }
 
 header {

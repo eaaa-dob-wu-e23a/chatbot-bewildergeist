@@ -61,10 +61,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </section>
         <section>
             <form method="post">
-                <input type="text" name="question" autofocus />
+                <input type="text" name="question" autofocus autocomplete="off" list="prompts" />
                 <button type="submit">Ask</button>
                 <span class="help-text">Type "help" to see what I can answer</span>
             </form>
+            <datalist id="prompts">
+                <?php foreach (array_keys($answers) as $prompt) { ?>
+                    <option value="<?php echo $prompt; ?>">
+                    <?php } ?>
+            </datalist>
         </section>
     </main>
 </body>
