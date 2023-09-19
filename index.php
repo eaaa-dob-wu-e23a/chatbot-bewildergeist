@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </section>
         <section>
             <form method="post">
-                <textarea id="question" name="question"></textarea>
+                <input type="text" name="question" autofocus />
                 <button type="submit">Ask</button>
             </form>
         </section>
