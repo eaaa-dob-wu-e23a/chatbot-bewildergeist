@@ -17,10 +17,18 @@ body {
 }
 
 header {
+    position: relative;
     background-color: var(--color-dark-green);
     color: var(--color-beige);
     padding: 20px;
     text-align: center;
+}
+
+.reset-form {
+    display: block;
+    position: absolute;
+    top: 1em;
+    right: 1em;
 }
 
 h1 {

@@ -10,14 +10,22 @@ if (!isset($_SESSION["history"])) {
 $sitename = "Chatboi";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $new_question = $_POST["question"];
-    $new_answer = findAnswer($new_question);
+    if (isset($_POST["reset"])) {
+        // Reset the chat history if the user pressed "Reset"
+        $_SESSION["history"] = [];
+        header("Location: /");
+        exit();
+    } else if (isset($_POST["question"]) && trim($_POST["question"]) != "") {
+        // Otherwise, answer the users question
+        $new_question = $_POST["question"];
+        $new_answer = findAnswer($new_question);
 
-    // Add the new question and answer to the $_SESSION["history"] array
-    $_SESSION["history"][] = array(
-        "question" => $new_question,
-        "answer" => $new_answer
-    );
+        // Add the new question and answer to the chat history
+        $_SESSION["history"][] = array(
+            "question" => $new_question,
+            "answer" => $new_answer
+        );
+    }
 }
 ?>
 
@@ -33,6 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <header>
         <h1><?php echo $sitename; ?></h1>
+        <form method="post" class="reset-form">
+            <button type="submit" name="reset">Reset</button>
+        </form>
     </header>
     <main>
         <section>
