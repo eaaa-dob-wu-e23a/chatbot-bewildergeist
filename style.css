@@ -18,11 +18,29 @@ body {
 }
 
 header {
-    position: relative;
+    border-bottom: 4px solid var(--color-light-green);
     background-color: var(--color-dark-green);
     color: var(--color-beige);
     padding: 20px;
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+header a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
 }
 
 header h1 {
@@ -38,13 +56,6 @@ header h2 {
     color: var(--color-light-green);
     text-shadow: 0px 1px 1px var(--color-dark-brown);
     line-height: 1;
-}
-
-.reset-form {
-    display: block;
-    position: absolute;
-    top: 1em;
-    right: 1em;
 }
 
 main {

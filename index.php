@@ -41,8 +41,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <header>
-        <h1><?php echo $sitename; ?></h1>
-        <h2><?php echo $tagline; ?></h2>
+        <a href="/"><img src="/assets/robot-icon.png" alt="Chatbot icon" height="70" /></a>
+        <a href="/">
+            <h1><?php echo $sitename; ?></h1>
+            <h2><?php echo $tagline; ?></h2>
+        </a>
         <form method="post" class="reset-form">
             <button type="submit" name="reset">Reset</button>
         </form>
