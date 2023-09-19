@@ -64,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form method="post">
                 <input type="text" name="question" autofocus />
                 <button type="submit">Ask</button>
+                <span class="help-text">Type "help" to see what I can answer</span>
             </form>
         </section>
     </main>

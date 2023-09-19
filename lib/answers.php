@@ -46,7 +46,7 @@ function findAnswer($search)
     $sanitizedSearch = sanitizeSearch($search);
 
     // List all the possible prompts if the user asks for them
-    if ($sanitizedSearch == 'what can you answer') {
+    if (in_array($sanitizedSearch, ['help', 'what can you answer', 'what can you do'])) {
         return 'I can answer the following prompts: ' . implode(', ', array_keys($answers));
     }
 
