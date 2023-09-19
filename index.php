@@ -55,9 +55,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <p><?php echo $qa_pair["question"]; ?></p>
                     </li>
                     <li class="chatbot-answer">
-                        <p><?php echo $qa_pair["answer"]; ?></p>
-                    </li>
-                <?php } ?>
+                        <p><?php echo nl2br($qa_pair["answer"]); ?></p>
+                    <?php } ?>
             </ul>
         </section>
         <section>

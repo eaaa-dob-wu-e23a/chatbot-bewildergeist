@@ -47,7 +47,7 @@ function findAnswer($search)
 
     // List all the possible prompts if the user asks for them
     if (in_array($sanitizedSearch, ['help', 'what can you answer', 'what can you do'])) {
-        return 'I can answer the following prompts: ' . implode(', ', array_keys($answers));
+        return 'I can answer the following prompts:' . PHP_EOL . implode(PHP_EOL, array_keys($answers));
     }
 
     if (isset($answers[$sanitizedSearch])) {
