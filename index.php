@@ -4,21 +4,7 @@ session_start();
 $sitename = "Chatboi";
 
 if (!isset($_SESSION["qa_pairs"])) {
-    $_SESSION["qa_pairs"] = array(
-        array(
-            "question" => "What is your name?",
-            "answer" => "My name is Chatboi."
-        ),
-        array(
-            "question" => "What can you do?",
-            "answer" => "I can answer your questions."
-        ),
-        array(
-            "question" => "How old are you?",
-            "answer" => "I don't have an age, I'm a computer program."
-        )
-        // Add more questions and answers here
-    );
+    $_SESSION["qa_pairs"] = [];
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
