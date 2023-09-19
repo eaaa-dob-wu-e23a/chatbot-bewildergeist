@@ -1,15 +1,17 @@
 <?php
-session_start();
+include_once("lib/answers.php");
 
-$sitename = "Chatboi";
+session_start();
 
 if (!isset($_SESSION["history"])) {
     $_SESSION["history"] = [];
 }
 
+$sitename = "Chatboi";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_question = $_POST["question"];
-    $new_answer = "I'm sorry, I don't know the answer to that question.";
+    $new_answer = findAnswer($new_question);
 
     // Add the new question and answer to the $_SESSION["history"] array
     $_SESSION["history"][] = array(
