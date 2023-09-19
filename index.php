@@ -7,7 +7,8 @@ if (!isset($_SESSION["history"])) {
     $_SESSION["history"] = [];
 }
 
-$sitename = "Chatboi";
+$sitename = "Array.chat()";
+$tagline = "All your questions about JavaScript arrays answered!";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["reset"])) {
@@ -41,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <header>
         <h1><?php echo $sitename; ?></h1>
+        <h2><?php echo $tagline; ?></h2>
         <form method="post" class="reset-form">
             <button type="submit" name="reset">Reset</button>
         </form>
