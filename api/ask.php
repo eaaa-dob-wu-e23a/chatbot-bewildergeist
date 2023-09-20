@@ -34,7 +34,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 } else {
-    // Method not allowed: Only POST is allowed
+    // Only POST is allowed:
+    // https://devdocs.io/http/status/405
     http_response_code(405);
+    header("Allow: POST");
     exit();
 }
