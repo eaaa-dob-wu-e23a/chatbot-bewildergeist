@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["reset"])) {
         // Reset the chat history if the user pressed "Reset"
         $_SESSION["history"] = [];
-        header("Location: /");
+        header("Location: ./");
         exit();
     } else if (isset($_POST["question"]) && trim($_POST["question"]) != "") {
         // Otherwise, answer the users question
@@ -41,8 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <header>
-        <a href="/"><img src="/assets/robot-icon.png" alt="Chatbot icon" height="70" /></a>
-        <a href="/">
+        <a href="./"><img src="./assets/robot-icon.png" alt="Chatbot icon" height="70" /></a>
+        <a href="./">
             <h1><?php echo $sitename; ?></h1>
             <h2><?php echo $tagline; ?></h2>
         </a>
