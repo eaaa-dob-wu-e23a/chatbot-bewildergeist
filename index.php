@@ -1,33 +1,8 @@
 <?php
 include_once("lib/answers.php");
 
-session_start();
-
-if (!isset($_SESSION["history"])) {
-    $_SESSION["history"] = [];
-}
-
 $sitename = "Array.chat()";
 $tagline = "All your questions about JavaScript arrays answered!";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["reset"])) {
-        // Reset the chat history if the user pressed "Reset"
-        $_SESSION["history"] = [];
-        header("Location: ./");
-        exit();
-    } else if (isset($_POST["question"]) && trim($_POST["question"]) != "") {
-        // Otherwise, answer the users question
-        $new_question = $_POST["question"];
-        $new_answer = findAnswer($new_question);
-
-        // Add the new question and answer to the chat history
-        $_SESSION["history"][] = array(
-            "question" => $new_question,
-            "answer" => $new_answer
-        );
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -41,29 +16,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <header>
-        <a href="./"><img src="./assets/robot-icon.png" alt="Chatbot icon" height="70" /></a>
+        <a href="./"><img src="assets/robot-icon.png" alt="Chatbot icon" height="70" /></a>
         <a href="./">
             <h1><?php echo $sitename; ?></h1>
             <h2><?php echo $tagline; ?></h2>
         </a>
-        <form method="post" class="reset-form">
-            <button type="submit" name="reset">Reset</button>
+        <form method="post" class="reset-form" id="reset-form">
+            <button type="submit" name="reset" value="reset">Reset</button>
         </form>
     </header>
     <main>
         <section>
-            <ul class="chat-messages">
-                <?php foreach ($_SESSION["history"] as $qa_pair) { ?>
-                    <li class="user-question">
-                        <p><?php echo $qa_pair["question"]; ?></p>
-                    </li>
-                    <li class="chatbot-answer">
-                        <p><?php echo nl2br($qa_pair["answer"]); ?></p>
-                    <?php } ?>
+            <ul class="chat-messages" id="chat-messages">
+                <!-- This is where the chat messages will go -->
             </ul>
         </section>
         <section>
-            <form method="post">
+            <form method="post" id="chat-form">
                 <input type="text" name="question" autofocus autocomplete="off" list="prompts" />
                 <button type="submit">Ask</button>
                 <span class="help-text">Type "help" to see what I can answer</span>
@@ -75,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </datalist>
         </section>
     </main>
+    <script src="script.js"></script>
 </body>
 
 </html>
