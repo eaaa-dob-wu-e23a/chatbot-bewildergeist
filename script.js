@@ -2,27 +2,14 @@
 fetch("/api/history.php")
     .then(function (response) {
         if (!response.ok) {
-            throw new Error("Network response was not ok");
+            throw new Error("Failed to fetch chat history");
         }
         return response.json();
     })
     .then(function (qa_pairs) {
-        const chatMessagesNode = document.querySelector("#chat-messages");
         // Loop through the chat messages
         for (const qa_pair of qa_pairs) {
-            // Create a new list item element for the question
-            createAndAppendListItem(
-                qa_pair.question,
-                "user-question",
-                chatMessagesNode
-            );
-            // Create a new list item element for the answer
-            createAndAppendListItem(
-                // Replace newlines with <br /> tags for better formatting
-                qa_pair.answer?.replaceAll("\n", "<br />"),
-                "chatbot-answer",
-                chatMessagesNode
-            );
+            appendQuestionAndAnswer(qa_pair.question, qa_pair.answer);
         }
     })
     .catch(function (error) {
@@ -39,6 +26,47 @@ function createAndAppendListItem(htmlContent, className, parentElement) {
     // Append the list item to the list
     parentElement.appendChild(listItem);
 }
+
+function appendQuestionAndAnswer(question, answer) {
+    const chatMessagesNode = document.querySelector("#chat-messages");
+    createAndAppendListItem(question, "user-question", chatMessagesNode);
+    createAndAppendListItem(
+        // Replace newlines with <br /> tags for better formatting
+        answer?.replaceAll("\n", "<br />"),
+        "chatbot-answer",
+        chatMessagesNode
+    );
+}
+
+/* Send a chat message -------------------------------------------- */
+document
+    .querySelector("#chat-form")
+    .addEventListener("submit", function (event) {
+        const form = event.target;
+        // Prevent the browser from submitting the form
+        event.preventDefault();
+        const formData = new FormData(form);
+        fetch("/api/ask.php", {
+            method: "POST",
+            body: formData,
+        })
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error("Failed to submit new question");
+                }
+                return response.json();
+            })
+            .then(function (qa_pair) {
+                appendQuestionAndAnswer(qa_pair.question, qa_pair.answer);
+            })
+            .then(function () {
+                form.reset();
+                form.question.focus();
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+    });
 
 /* Reset the chat messages ---------------------------------------- */
 document

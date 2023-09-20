@@ -1,28 +1,8 @@
 <?php
 include_once("lib/answers.php");
 
-session_start();
-
-if (!isset($_SESSION["history"])) {
-    $_SESSION["history"] = [];
-}
-
 $sitename = "Array.chat()";
 $tagline = "All your questions about JavaScript arrays answered!";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["question"]) && trim($_POST["question"]) != "") {
-        // Otherwise, answer the users question
-        $new_question = $_POST["question"];
-        $new_answer = findAnswer($new_question);
-
-        // Add the new question and answer to the chat history
-        $_SESSION["history"][] = array(
-            "question" => $new_question,
-            "answer" => $new_answer
-        );
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </ul>
         </section>
         <section>
-            <form method="post">
+            <form method="post" id="chat-form">
                 <input type="text" name="question" autofocus autocomplete="off" list="prompts" />
                 <button type="submit">Ask</button>
                 <span class="help-text">Type "help" to see what I can answer</span>

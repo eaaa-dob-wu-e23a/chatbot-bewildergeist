@@ -97,9 +97,10 @@ section {
 .chatbot-answer {
     align-self: flex-end;
     background-color: #fff;
+    text-align: right;
 }
 
-p {
+li p {
     margin: 0;
 }
 
