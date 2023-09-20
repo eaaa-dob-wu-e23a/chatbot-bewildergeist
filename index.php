@@ -48,13 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <main>
         <section>
             <ul class="chat-messages" id="chat-messages">
-                <?php foreach ($_SESSION["history"] as $qa_pair) { ?>
-                    <li class="user-question">
-                        <p><?php echo $qa_pair["question"]; ?></p>
-                    </li>
-                    <li class="chatbot-answer">
-                        <p><?php echo nl2br($qa_pair["answer"]); ?></p>
-                    <?php } ?>
+                <!-- This is where the chat messages will go -->
             </ul>
         </section>
         <section>
