@@ -11,12 +11,7 @@ $sitename = "Array.chat()";
 $tagline = "All your questions about JavaScript arrays answered!";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["reset"])) {
-        // Reset the chat history if the user pressed "Reset"
-        $_SESSION["history"] = [];
-        header("Location: ./");
-        exit();
-    } else if (isset($_POST["question"]) && trim($_POST["question"]) != "") {
+    if (isset($_POST["question"]) && trim($_POST["question"]) != "") {
         // Otherwise, answer the users question
         $new_question = $_POST["question"];
         $new_answer = findAnswer($new_question);
@@ -46,13 +41,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h1><?php echo $sitename; ?></h1>
             <h2><?php echo $tagline; ?></h2>
         </a>
-        <form method="post" class="reset-form">
-            <button type="submit" name="reset">Reset</button>
+        <form method="post" class="reset-form" id="reset-form">
+            <button type="submit" name="reset" value="reset">Reset</button>
         </form>
     </header>
     <main>
         <section>
-            <ul class="chat-messages">
+            <ul class="chat-messages" id="chat-messages">
                 <?php foreach ($_SESSION["history"] as $qa_pair) { ?>
                     <li class="user-question">
                         <p><?php echo $qa_pair["question"]; ?></p>
@@ -75,6 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </datalist>
         </section>
     </main>
+    <script src="script.js"></script>
 </body>
 
 </html>
