@@ -16,7 +16,7 @@ $tagline = "All your questions about JavaScript arrays answered!";
 
 <body>
     <header>
-        <a href="./"><img src="./assets/robot-icon.png" alt="Chatbot icon" height="70" /></a>
+        <a href="./"><img src="assets/robot-icon.png" alt="Chatbot icon" height="70" /></a>
         <a href="./">
             <h1><?php echo $sitename; ?></h1>
             <h2><?php echo $tagline; ?></h2>

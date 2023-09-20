@@ -1,5 +1,5 @@
 /* Fetch and display chat messages -------------------------------- */
-fetch("/api/history.php")
+fetch("api/history.php")
     .then(function (response) {
         if (!response.ok) {
             throw new Error("Failed to fetch chat history");
@@ -46,7 +46,7 @@ document
         // Prevent the browser from submitting the form
         event.preventDefault();
         const formData = new FormData(form);
-        fetch("/api/ask.php", {
+        fetch("api/ask.php", {
             method: "POST",
             body: formData,
         })
@@ -74,7 +74,7 @@ document
     .addEventListener("submit", function (event) {
         // Prevent the browser from submitting the form
         event.preventDefault();
-        fetch("/api/reset.php", {
+        fetch("api/reset.php", {
             method: "POST",
         }).then(function (response) {
             if (response.ok) {
